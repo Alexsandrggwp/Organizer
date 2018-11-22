@@ -1,15 +1,25 @@
 package entities;
 
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+
+@XmlRootElement
 public class Task {
     private String name;
     private String description;
     private String contacts;
-    private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd hh:mm");
+    @XmlTransient
+    private SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm");
+    @XmlTransient
     private Date date;
+    @XmlAttribute
+    private boolean notified;
 
     public Task() {
     }
@@ -18,6 +28,7 @@ public class Task {
         this.name = name;
         this.description = description;
         this.contacts = contacts;
+        notified = false;
         try {
             date = dateFormat.parse(strDate);
         } catch (ParseException e) {
@@ -49,12 +60,26 @@ public class Task {
         this.contacts = contacts;
     }
 
-    public String getDate() {
+    @XmlElement(name = "date")
+    public String getStringDate() {
         return dateFormat.format(date);
     }
 
+    @XmlElement(name = "date")
     public void setDate(String date) throws ParseException {
         this.date = dateFormat.parse(date);
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public boolean isNotified() {
+        return notified;
+    }
+
+    public void setNotified(boolean notified) {
+        this.notified = notified;
     }
 
     @Override
@@ -66,4 +91,6 @@ public class Task {
                 ", date=" + dateFormat.format(date) +
                 '}' + '\n';
     }
+
+
 }

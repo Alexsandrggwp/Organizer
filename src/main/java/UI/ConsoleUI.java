@@ -1,6 +1,7 @@
 package UI;
 
 import entities.Task;
+import notify.Notifier;
 import service.Service;
 
 import java.io.InputStream;
@@ -13,10 +14,17 @@ public class ConsoleUI implements Runnable{
     private static Scanner scanner;
     private Service<Task> service;
     private int choose;
+    private Thread thread;
+    private Notifier notifier;
 
     public ConsoleUI(InputStream in, Service<Task> service) {
         scanner = new Scanner(in);
         this.service = service;
+        thread = new Thread(this, "ConsoleUI");
+    }
+
+    public void start(){
+        thread.start();
     }
 
     public void run() {
@@ -40,7 +48,7 @@ public class ConsoleUI implements Runnable{
                     task.setContacts(scanner.nextLine());
                     System.out.println("Введите дату ");
                     System.out.println("ВНИМАНИЕ!!! Очень важно задать дату в правильном формате");
-                    System.out.println("yyyy.MM.dd hh:mm");
+                    System.out.println("dd.MM.yyyy HH:mm");
                     try {
                         task.setDate(scanner.nextLine());
                     } catch (ParseException e) {
@@ -48,6 +56,7 @@ public class ConsoleUI implements Runnable{
                         break;
                     }
                     service.addTask(task);
+                    if(notifier!=null) notifier.setNeedToUpdate();
                     System.out.println("Задача успешно добавлена");
                     break;
                 }
@@ -63,6 +72,7 @@ public class ConsoleUI implements Runnable{
                     break;
                 }
                 case 4:{
+                    if(notifier!=null) {notifier.setNeedToStop();}
                     System.out.println("ДАСВИДАНЬЯ");
                     break;
                 }
@@ -72,5 +82,9 @@ public class ConsoleUI implements Runnable{
                 }
             }
         }
+    }
+
+    public void setNotifier(Notifier notifier) {
+        this.notifier = notifier;
     }
 }

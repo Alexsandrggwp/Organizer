@@ -61,7 +61,7 @@ public class DaoXMLImpl implements Dao<Task> {
         newTask.setAttribute("contact", task.getContacts());
         newTask.setAttribute("name", task.getName());
         newTask.setAttribute("description", task.getDescription());
-        newTask.setAttribute("date", task.getDate());
+        newTask.setAttribute("date", task.getStringDate());
         document.getDocumentElement().appendChild(newTask);
         try {
             save();

@@ -14,7 +14,6 @@ public class ServiceXMLImpl implements Service<Task>{
         this.dao = dao;
     }
 
-
     public void deleteTask(String name) {
         dao.deleteTask(name);
     }
