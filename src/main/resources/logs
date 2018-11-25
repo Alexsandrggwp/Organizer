@@ -1,0 +1,4 @@
+25-11-2018 16:49:56 INFO  DaoJAXBImpl:30 - Произошла успешная инициализация объекта DaoJAXBImpl
+25-11-2018 16:49:56 INFO  DaoJAXBImpl:77 - Произошла успешная выгрузка объекта TaskAmount из xml файла Tasks.xml
+25-11-2018 16:49:57 INFO  DaoJAXBImpl:77 - Произошла успешная выгрузка объекта TaskAmount из xml файла Tasks.xml
+25-11-2018 16:49:58 INFO  DaoJAXBImpl:77 - Произошла успешная выгрузка объекта TaskAmount из xml файла Tasks.xml
