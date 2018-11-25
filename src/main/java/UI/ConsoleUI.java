@@ -68,7 +68,7 @@ public class ConsoleUI implements Runnable{
                 case 3:{
                     LOGGER.info("User quited");
                     secondMenuChoose = 4;
-                    System.out.println("датвиданиня");
+                    System.out.println("Досвидания");
                     break;
                 }
                 default:{ System.out.println("Вы неправильно ввели номер оперции"); }
