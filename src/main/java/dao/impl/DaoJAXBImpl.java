@@ -27,9 +27,9 @@ public class DaoJAXBImpl implements Dao<Task>{
             marshaller = context.createMarshaller();
             unMarshaller = context.createUnmarshaller();
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-            LOGGER.info("Произошла успешная инициализация объекта DaoJAXBImpl");
+            LOGGER.info("The object DaoJAXBImpl was successfully initialized");
         } catch (JAXBException e) {
-            LOGGER.error("Не Произошло успешной инициализации объекта DaoJAXBImpl");
+            LOGGER.error("The object DaoJAXBImpl wasn't successfully initialized");
         }
         this.file = new File(file);
     }
@@ -40,30 +40,30 @@ public class DaoJAXBImpl implements Dao<Task>{
         for (int i = 0; i < tasks.size(); i++) {
             if(tasks.get(i).getId()==id){
                 tasks.remove(tasks.get(i));
-                LOGGER.info("Из списка был удален объект Task");
+                LOGGER.info("The object Task has been removed from the list");
                 i--;
             }
         }
         try {
             marshaller.marshal(taskAmount, file);
-            LOGGER.info("Произошла успешная загрузка объекта TaskAmount в xml файл Tasks.xml после удаления объекта из списока");
+            LOGGER.info("The object TaskAmount was successfully loaded into the Tasks.xml file after removing the object Task from the list");
         } catch (JAXBException e) {
-            LOGGER.error("Не произошло успешной загрузки объекта TaskAmount в xml файл Tasks.xml после удаления объекта из списока");
+            LOGGER.error("The object TaskAmount did not load into the Tasks.xml file after removing the object Task from the list");
         }
     }
 
     public void addTask(Task task) {
         TaskAmount taskAmount = getRoot();
         int id = taskAmount.getIdCounter() + 1;
-        LOGGER.info("Произошло изменение счетчика айдишников всвязи с добавлением объекта в список");
+        LOGGER.info("There was a change in the ID counter due to the addition of an object to the list");
         taskAmount.setIdCounter(id);
         task.setId(id);
         taskAmount.getTask().add(task);
         try {
             marshaller.marshal(taskAmount, file);
-            LOGGER.info("Произошла успешная загрузка объекта TaskAmount в xml файла Tasks.xml после добавления нового объекта в список");
+            LOGGER.info("The object TaskAmount has successfully loaded into the Tasks.xml file after adding a new object to the list");
         } catch (JAXBException e) {
-            LOGGER.error("Не произошло успешной загрузки объекта TaskAmount в xml файла Tasks.xml");
+            LOGGER.error("The TaskAmount object did not load successfully into the Tasks.xml file after adding a new object to the list");
         }
     }
 
@@ -74,10 +74,10 @@ public class DaoJAXBImpl implements Dao<Task>{
     private TaskAmount getRoot(){
         try {
             TaskAmount unmarshal = (TaskAmount) unMarshaller.unmarshal(file);
-            LOGGER.info("Произошла успешная выгрузка объекта TaskAmount из xml файла Tasks.xml");
+            LOGGER.info("There was a successful unloading of the TaskAmount object from the Tasks.xml file");
             return unmarshal;
         } catch (JAXBException e) {
-            LOGGER.error("Не произошла успешной выгрузки объекта TaskAmount из xml файла Tasks.xml");
+            LOGGER.error("There wasn't an unloading of the TaskAmount object from the Tasks.xml file");
             System.out.println("Не удалось загрузить список");
             return new TaskAmount();
         }

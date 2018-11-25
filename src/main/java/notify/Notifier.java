@@ -1,6 +1,7 @@
 package notify;
 
 import entities.Task;
+import org.apache.log4j.Logger;
 import service.Service;
 
 import java.text.ParseException;
@@ -9,6 +10,8 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Notifier implements Runnable{
+
+    private final static Logger LOGGER = Logger.getLogger(Notifier.class);
 
     private Service<Task> service;
     private SimpleDateFormat dateFormat = new SimpleDateFormat("E yyyy.MM.dd HH:mm");
@@ -21,17 +24,21 @@ public class Notifier implements Runnable{
         this.service = service;
         thread = new Thread(this, "Notifier");
         isNeedToStop = false;
+        LOGGER.info("Notifier was initialized");
     }
 
     public void start(){
+        LOGGER.info("Notifier's thread was started");
         thread.start();
     }
 
     private void updateList(){
+        LOGGER.info("Notifiers list was updated");
         tasks = (ArrayList<Task>) service.getAll();
     }
 
     private void warn(Task task){
+        LOGGER.info("Thr user was warned");
         System.out.println("Пришло время выполнять задачу " + task.getName());
     }
 
