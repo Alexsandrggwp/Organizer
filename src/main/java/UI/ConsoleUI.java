@@ -54,6 +54,7 @@ public class ConsoleUI implements Runnable{
                     break;
                 }
                 case 3:{
+                    secondMenuChoose = 4;
                     System.out.println("датвиданиня");
                     break;
                 }
