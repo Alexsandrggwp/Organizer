@@ -1,21 +1,18 @@
 package service.impl;
 
 import dao.Dao;
+import dao.impl.DaoJAXBImpl;
 import entities.Task;
 import service.Service;
 
 import java.util.List;
 
-public class ServiceXMLImpl implements Service<Task>{
+public class ServiceImpl implements Service<Task>{
 
     private Dao<Task> dao;
 
-    public ServiceXMLImpl(Dao<Task> dao) {
-        this.dao = dao;
-    }
-
-    public void deleteTask(String name) {
-        dao.deleteTask(name);
+    public void deleteTask(int id) {
+        dao.deleteTask(id);
     }
 
     public void addTask(Task task) {
@@ -24,5 +21,9 @@ public class ServiceXMLImpl implements Service<Task>{
 
     public List<Task> getAll() {
         return dao.getAll();
+    }
+
+    public void setDao(Dao<Task> dao){
+        this.dao = dao;
     }
 }

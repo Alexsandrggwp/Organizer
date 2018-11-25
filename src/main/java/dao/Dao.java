@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface Dao<T> {
 
-    void deleteTask(String name);
+    void deleteTask(int id);
 
     void addTask(T t);
 

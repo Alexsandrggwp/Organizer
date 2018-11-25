@@ -1,8 +1,21 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<tasks>
-    <task contact="88005553535" date="2018.11.20 12:00" description="Нужно встретиться с куратором, сдать план работ и отчитаться по обговоренным темам" name="Встреча с куратором"/>
-    <task contact="trt" date="2018.11.19 10:00" description="rtr" name="rtr"/>
-<task contact="кеи" date="2018.12.12 12:12" description="кмк" name="куук"/>
-<task contact="укау" date="2018.11.20 12:10" description="укаука" name="куак"/>
-<task contact="ewrc" date="11.11.1111 11:11" description="ewrc" name="cew"/>
-</tasks>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<taskAmount idCounter="20">
+    <task id="18" notified="true">
+        <name>new</name>
+        <description>new</description>
+        <date>25.11.2018 15:32</date>
+        <contacts>new</contacts>
+    </task>
+    <task id="19" notified="true">
+        <name>new111</name>
+        <description>new</description>
+        <date>25.11.2018 15:33</date>
+        <contacts>new1</contacts>
+    </task>
+    <task id="20" notified="false">
+        <name>qwrec</name>
+        <description>qweqdq</description>
+        <date>12.12.1212 12:12</date>
+        <contacts>qwed</contacts>
+    </task>
+</taskAmount>

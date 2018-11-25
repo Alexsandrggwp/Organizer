@@ -2,15 +2,16 @@ package entities;
 
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import javax.xml.bind.annotation.XmlType;
+import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 
-@XmlRootElement
-public class Task {
+@XmlType(propOrder ={"name", "description", "date", "contacts"})
+public class Task  implements Serializable {
     private String name;
     private String description;
     private String contacts;
@@ -18,13 +19,15 @@ public class Task {
     private SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm");
     @XmlTransient
     private Date date;
-    @XmlAttribute
+
     private boolean notified;
+
+    private int id;
 
     public Task() {
     }
 
-    public Task(String name, String description, String contacts,String strDate) {
+    public Task(String name, String description, String contacts, String strDate) {
         this.name = name;
         this.description = description;
         this.contacts = contacts;
@@ -34,6 +37,7 @@ public class Task {
         } catch (ParseException e) {
             e.printStackTrace();
         }
+        notified = false;
     }
 
     public String getName() {
@@ -61,25 +65,34 @@ public class Task {
     }
 
     @XmlElement(name = "date")
-    public String getStringDate() {
+    public String getDate() {
         return dateFormat.format(date);
     }
 
-    @XmlElement(name = "date")
     public void setDate(String date) throws ParseException {
         this.date = dateFormat.parse(date);
     }
 
-    public Date getDate() {
+    public Date getdDate() {
         return date;
     }
 
+    @XmlAttribute
     public boolean isNotified() {
         return notified;
     }
 
     public void setNotified(boolean notified) {
         this.notified = notified;
+    }
+
+    @XmlAttribute
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     @Override
@@ -89,6 +102,8 @@ public class Task {
                 ", description='" + description + '\'' +
                 ", contacts='" + contacts + '\'' +
                 ", date=" + dateFormat.format(date) +
+                ", id=" + id +
+                ", notified=" + notified +
                 '}' + '\n';
     }
 
