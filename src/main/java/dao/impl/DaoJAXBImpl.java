@@ -82,4 +82,72 @@ public class DaoJAXBImpl implements Dao<Task>{
             return new TaskAmount();
         }
     }
+
+    public void changeName(int id, String newName){
+        TaskAmount taskAmount = getRoot();
+        List<Task> tasks = taskAmount.getTask();
+        for (Task taskInAmount : tasks) {
+            if(id==taskInAmount.getId()){
+                taskInAmount.setName(newName);
+            }
+        }
+        taskAmount.setTask(tasks);
+        try {
+            marshaller.marshal(taskAmount, file);
+            LOGGER.info("The object TaskAmount has successfully loaded into the Tasks.xml file after changing name of the task");
+        } catch (JAXBException e) {
+            LOGGER.error("The TaskAmount object did not load successfully into the Tasks.xml file after changing name of the task");
+        }
+    }
+
+    public void changeDescription(int id, String newDescription){
+        TaskAmount taskAmount = getRoot();
+        List<Task> tasks = taskAmount.getTask();
+        for (Task taskInAmount : tasks) {
+            if(id==taskInAmount.getId()){
+                taskInAmount.setDescription(newDescription);
+            }
+        }
+        taskAmount.setTask(tasks);
+        try {
+            marshaller.marshal(taskAmount, file);
+            LOGGER.info("The object TaskAmount has successfully loaded into the Tasks.xml file after changing name of the task");
+        } catch (JAXBException e) {
+            LOGGER.error("The TaskAmount object did not load successfully into the Tasks.xml file after changing name of the task");
+        }
+    }
+
+    public void changeContacts(int id, String newContacts){
+        TaskAmount taskAmount = getRoot();
+        List<Task> tasks = taskAmount.getTask();
+        for (Task taskInAmount : tasks) {
+            if(id==taskInAmount.getId()){
+                taskInAmount.setContacts(newContacts);
+            }
+        }
+        taskAmount.setTask(tasks);
+        try {
+            marshaller.marshal(taskAmount, file);
+            LOGGER.info("The object TaskAmount has successfully loaded into the Tasks.xml file after changing name of the task");
+        } catch (JAXBException e) {
+            LOGGER.error("The TaskAmount object did not load successfully into the Tasks.xml file after changing name of the task");
+        }
+    }
+
+    /*public void taskNotified(Task task){
+        TaskAmount taskAmount = getRoot();
+        List<Task> tasks = taskAmount.getTask();
+        for (Task taskInAmount : tasks) {
+            if(task.getId()==taskInAmount.getId()){
+                taskInAmount.setNotified(true);
+            }
+        }
+        taskAmount.setTask(tasks);
+        try {
+            marshaller.marshal(taskAmount, file);
+            LOGGER.info("The object TaskAmount has successfully loaded into the Tasks.xml file after setting the notified status of the task");
+        } catch (JAXBException e) {
+            LOGGER.error("The TaskAmount object did not load successfully into the Tasks.xml file after setting the notified status of the task");
+        }
+    }*/
 }

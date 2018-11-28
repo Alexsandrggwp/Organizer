@@ -26,4 +26,10 @@ public class ServiceImpl implements Service<Task>{
     public void setDao(Dao<Task> dao){
         this.dao = dao;
     }
+
+    public void changeName(int id, String newName) { dao.changeName(id, newName); }
+
+    public void changeDescription(int id, String newDescription) { dao.changeDescription(id, newDescription); }
+
+    public void changeContacts(int id, String newContacts) { dao.changeContacts(id, newContacts); }
 }

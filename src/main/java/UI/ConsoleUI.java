@@ -67,18 +67,21 @@ public class ConsoleUI implements Runnable{
                 }
                 case 3:{
                     LOGGER.info("User quited");
-                    secondMenuChoose = 4;
+                    secondMenuChoose = 7;
                     System.out.println("Досвидания");
                     break;
                 }
                 default:{ System.out.println("Вы неправильно ввели номер оперции"); }
             }
-            while (secondMenuChoose!=4){
+            while (secondMenuChoose!=7){
                 System.out.println("Ведите номер желаемой операции:");
                 System.out.println("1. Добавить задачу");
                 System.out.println("2. Удалить задачу");
                 System.out.println("3. Показать все задачи");
-                System.out.println("4. Выйти");
+                System.out.println("4. Изменить имя задачи");
+                System.out.println("5. Изменить описание задачи");
+                System.out.println("6. Изменить контакты задачи");
+                System.out.println("7. Выйти");
                 try {
                     secondMenuChoose = scanner.nextInt();
                 }catch (InputMismatchException e){
@@ -125,6 +128,17 @@ public class ConsoleUI implements Runnable{
                         break;
                     }
                     case 4:{
+                        System.out.println("Введите Id необходимой задачи");
+                        int id = scanner.nextInt();
+                        scanner.nextLine();
+                        System.out.println("Введите новое имя задачи");
+                        String name = scanner.nextLine();
+                        service.changeName(id, name);
+                        System.out.println("Имя успешно изменено");
+                        LOGGER.info("User changed tne name of a task");
+                        break;
+                    }
+                    case 7:{
                         if(notifier!=null) {notifier.setNeedToStop();}
                         break;
                     }

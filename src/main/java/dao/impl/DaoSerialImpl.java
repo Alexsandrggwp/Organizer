@@ -63,4 +63,43 @@ public class DaoSerialImpl implements Dao<Task> {
         LOGGER.info("The hole list of tasks was gotten from the TaskAmount");
         return get().getTask();
     }
+
+    @Override
+    public void changeName(int id, String newName) {
+        TaskAmount amount = get();
+        List<Task> tasks = amount.getTask();
+        for (Task taskInAmount : tasks) {
+            if(id==taskInAmount.getId()){
+                taskInAmount.setName(newName);
+            }
+        }
+        amount.setTask(tasks);
+        save(amount);
+    }
+
+    @Override
+    public void changeDescription(int id, String newDescription) {
+        TaskAmount amount = get();
+        List<Task> tasks = amount.getTask();
+        for (Task taskInAmount : tasks) {
+            if(id==taskInAmount.getId()){
+                taskInAmount.setDescription(newDescription);
+            }
+        }
+        amount.setTask(tasks);
+        save(amount);
+    }
+
+    @Override
+    public void changeContacts(int id, String newContacts) {
+        TaskAmount amount = get();
+        List<Task> tasks = amount.getTask();
+        for (Task taskInAmount : tasks) {
+            if(id==taskInAmount.getId()){
+                taskInAmount.setContacts(newContacts);
+            }
+        }
+        amount.setTask(tasks);
+        save(amount);
+    }
 }

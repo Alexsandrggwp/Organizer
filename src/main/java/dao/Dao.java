@@ -9,4 +9,10 @@ public interface Dao<T> {
     void addTask(T t);
 
     List<T> getAll();
+
+    void changeName(int id, String newName);
+
+    void changeDescription(int id, String newDescription);
+
+    void changeContacts(int id, String newContacts);
 }

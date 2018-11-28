@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <taskAmount idCounter="20">
     <task id="18" notified="true">
-        <name>new</name>
+        <name>ch</name>
         <description>new</description>
         <date>25.11.2018 15:32</date>
         <contacts>new</contacts>
     </task>
     <task id="19" notified="true">
-        <name>new111</name>
+        <name>222</name>
         <description>new</description>
-        <date>25.11.2018 15:33</date>
+        <date>27.11.2018 15:14</date>
         <contacts>new1</contacts>
     </task>
     <task id="20" notified="false">
-        <name>qwrec</name>
+        <name>CHANGED</name>
         <description>qweqdq</description>
         <date>12.12.1212 12:12</date>
         <contacts>qwed</contacts>

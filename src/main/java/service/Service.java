@@ -14,4 +14,10 @@ public interface Service<T> {
     List<T> getAll();
 
     void setDao(Dao<Task> dao);
+
+    void changeName(int id, String newName);
+
+    void changeDescription(int id, String newDescription);
+
+    void changeContacts(int id, String newContacts);
 }
